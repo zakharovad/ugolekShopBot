@@ -1,0 +1,44 @@
+{
+  "name": "ugolekshopbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bot.js",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint",
+    "serve": "NODE_ENV=production node dist/bot.js",
+    "watch-node": "nodemon dist/bot.js",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"npm run watch-ts\" \"npm run watch-node\"",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "debug": "npm run build && npm run watch-debug",
+    "serve-debug": "nodemon --inspect dist/bot.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakharovad/ugolekShopBot.git"
+  },
+  "author": "Zakharov A D",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakharovad/ugolekShopBot/issues"
+  },
+  "homepage": "https://github.com/zakharovad/ugolekShopBot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.5",
+    "mongose": "0.0.2-security",
+    "telegraf": "^3.38.0",
+    "telegraf-i18n": "^6.6.0",
+    "ts-mongoose": "0.0.21",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.7.36",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^14.10.1",
+    "nodemon": "^2.0.4"
+  }
+}
