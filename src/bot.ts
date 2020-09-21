@@ -1,9 +1,13 @@
 import dotenv from 'dotenv';
+import dataDb from './db';
+import {Result} from "./models/data";
+import {Connection} from "mongoose";
 dotenv.config();
-import mongo from './db';
- mongo.then(
-     (data) => {
-         console.log(data)
-     }
- );
-console.log(process.env.TELEGRAM_TOKEN)
+const startBot  = async function (){
+    let data  =  await dataDb as Result<Connection>;
+    console.log(data.status)
+
+}
+export {
+    startBot
+}
