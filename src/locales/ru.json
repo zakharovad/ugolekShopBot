@@ -4,5 +4,13 @@
     "cart": "\uD83D\uDED2 Корзина",
     "settings": "⚙️ Настройки"
 
+  },
+  "scenes": {
+    "start": {
+      "by": "Пока"
+    }
+  },
+  "shared": {
+    "something_went_wrong": "❌ Ошибочка вышла.. Попробуй еще раз"
   }
 }
