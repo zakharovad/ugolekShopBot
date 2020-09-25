@@ -1,13 +1,16 @@
 {
-  "main_keyboard": {
-    "products": "Наши новинки",
-    "cart": "\uD83D\uDED2 Корзина",
-    "settings": "⚙️ Настройки"
+  "keyboards": {
+    "main_keyboard": {
+      "products": "\uD83D\uDCA3 Наши новинки",
+      "cart": "\uD83D\uDED2 Корзина",
+      "settings": "⚙️ Настройки"
 
+    }
   },
   "scenes": {
     "start": {
-      "by": "Пока"
+      "by": "Пока",
+      "welcome": "Привет"
     }
   },
   "shared": {
