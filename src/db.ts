@@ -1,46 +1,43 @@
-import mongoose, {Connection} from 'mongoose';
+import mongoose, {Connection, ConnectionOptions} from 'mongoose';
 import dotenv from 'dotenv';
 import {Result, IError, IData} from './models/data';
 
 dotenv.config();
-let resolveF = function (data: IData) {
-};
+function db(uris: string, options: ConnectionOptions):Promise<Result<Connection>>{
+    const data = new Result<Connection>();
 
-const mongo = new Promise((resolve) => {
-    resolveF = resolve;
-});
-const data = new Result<Connection>();
-if (mongoose.connection.readyState <= 0)
-    mongoose.set('useNewUrlParser', true);
-    mongoose.set('useFindAndModify', true);
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useUnifiedTopology', true);
-    mongoose.connect(
-        `mongodb://${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}`,
-        {
-            user: process.env.DATABASE_USER,
-            pass: process.env.DATABASE_PASS,
+    return new Promise((resolve) => {
+        if (mongoose.connection.readyState <= 0){
+            mongoose.set('useNewUrlParser', true);
+            mongoose.set('useFindAndModify', false);
+            mongoose.set('useCreateIndex', true);
+            mongoose.set('useUnifiedTopology', true);
+            mongoose.connect(uris,options
+            )
+                .catch((err: IError) => {
+                    data.errors.push(err);
+                    data.status = 'error';
+                    resolve(data);
+
+                });
+        }else {
+            data.status = 'open';
+            data.data = mongoose.connection;
+            return resolve(data);
         }
-    )
+        mongoose.connection.on('error', (err: IError) => {
 
-        .catch((err: IError) => {
-            data.errors.push(err);
+            data.errors.push(err)
             data.status = 'error';
-            resolveF(data);
-
+            resolve(data);
         });
+        mongoose.connection.once('open', () => {
+            data.status = 'open';
+            data.data = mongoose.connection;
 
-mongoose.connection.on('error', (err: IError) => {
+            resolve(data);
+        });
+    });
+}
 
-    data.errors.push(err)
-    data.status = 'error';
-    resolveF(data);
-});
-mongoose.connection.once('open', () => {
-    data.status = 'open';
-    data.data = mongoose.connection;
-
-    resolveF(data);
-});
-
-export default mongo;
+export default db;

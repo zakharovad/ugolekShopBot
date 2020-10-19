@@ -14,7 +14,12 @@ class Result<T> implements  IData{
     status ="";
     errors:Array<IError>  = [];
 }
+ interface IIndexed {
+     [key: string]: any;
+     [key: number]: any;
+ }
  export{
+     IIndexed,
      Result,
      IError,
      IData

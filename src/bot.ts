@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import path from 'path';
-import dataDb from './db';
+import db from './db';
 import { Result } from './models/data';
 import { Connection } from 'mongoose';
 import asyncWrapper from './util/error-handler';
@@ -10,13 +10,22 @@ import TelegrafI18n, { match } from 'telegraf-i18n';
 import Telegraf, { ContextMessageUpdate, Extra, Markup } from 'telegraf';
 import startScene from './controllers/start';
 import productsScene from './controllers/products';
+import Logger from "./util/logger";
 import Axios from 'axios';
 import Telegram from './telegram';
 dotenv.config();
+async function wakeMongoConnection() {
+    Logger.info('Start Wake Connection to  mongo');
+    await db(`mongodb://${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}`,
+        {
+            user: process.env.DATABASE_USER,
+            pass: process.env.DATABASE_PASS,
+        })
+}
 const startBot = async()=>{
-    const data  =  await dataDb as Result<Connection>;
+    await wakeMongoConnection();
 
-    console.log(data.status);
+
 
     const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
     const stage = new Stage([
