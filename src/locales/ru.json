@@ -11,6 +11,10 @@
     "start": {
       "by": "Пока",
       "welcome": "Привет"
+    },
+      "products": {
+      "buy": "Купить",
+      "to_cart": "\uD83D\uDED2 В корзину"
     }
   },
   "shared": {

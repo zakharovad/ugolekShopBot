@@ -52,6 +52,12 @@ const startBot = async()=>{
         match('keyboards.main_keyboard.products'),
         asyncWrapper(async (ctx: ContextMessageUpdate) => await ctx.scene.enter('products'))
     );
+    bot.action(
+        /to_cart-(.+)/gi,
+        asyncWrapper(async (ctx: ContextMessageUpdate) => {Logger.debug(ctx.callbackQuery.message.invoice)})
+
+    );
+
     await Axios.get(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/deleteWebhook`);
     bot.startPolling();
 
