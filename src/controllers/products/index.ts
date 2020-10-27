@@ -6,6 +6,8 @@ import Product, {IProduct} from "../../models/mongo/product";
 import {IProductInvoice} from "../../models/invoiceProduct/IProductInvoice";
 import {InvoiceProductIterator} from "../../models/invoiceProduct/InvoiceProductIterator";
 import Logger from "../..//util/logger";
+import asyncWrapper from "../../util/error-handler";
+import {CartCollectionProduct, ICartProduct} from "../../models/cartCollection";
 const {leave} = Stage;
 const products = new Scene('products');
 products.enter(async (ctx: ContextMessageUpdate) => {
@@ -19,7 +21,7 @@ products.enter(async (ctx: ContextMessageUpdate) => {
             let mongoProduct: IProduct = mongoProducts[i];
             let invoiceProduct: IProductInvoice = {
                 provider_token: process.env.PAYMENT_TOKEN,
-                start_parameter: 'foo',
+                start_parameter:mongoProduct._id,
                 title: mongoProduct.get('title'),
                 description: mongoProduct.get('description'),
                 currency: 'RUB',
@@ -29,7 +31,7 @@ products.enter(async (ctx: ContextMessageUpdate) => {
                 payload: 'Test',
                 reply_markup: Markup.inlineKeyboard([
                     Markup.payButton(ctx.i18n.t('scenes.products.buy')),
-                    Markup.callbackButton(ctx.i18n.t('scenes.products.to_cart'), 'to_cart-'+mongoProduct._id)
+                    Markup.callbackButton(ctx.i18n.t('scenes.products.to_cart'), 'to_cart')
                 ])
             };
             invoiceProducts.push(invoiceProduct);
@@ -47,5 +49,15 @@ products.enter(async (ctx: ContextMessageUpdate) => {
 
 
 });
+products.action(
+    'to_cart',
+    asyncWrapper(async (ctx: ContextMessageUpdate) => {
+        const product:ICartProduct = ctx.callbackQuery.message.invoice;
+        const cart = new CartCollectionProduct(ctx);
+        cart.set(product);
+        const { mainKeyboard } = getMainKeyboard(ctx);
+        await ctx.reply(ctx.i18n.t('scenes.products.to_cart_message'), mainKeyboard);
+    })
 
+);
 export default products;
