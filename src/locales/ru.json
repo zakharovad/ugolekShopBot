@@ -3,6 +3,7 @@
     "main_keyboard": {
       "products": "\uD83D\uDCA3 Наши новинки",
       "cart": "\uD83D\uDED2 Корзина ${count}",
+      "remove_cart": "❌ Очистить корзинy",
       "settings": "⚙️ Настройки"
 
     }
