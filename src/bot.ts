@@ -10,9 +10,11 @@ import TelegrafI18n, { match } from 'telegraf-i18n';
 import Telegraf, { ContextMessageUpdate, Extra, Markup } from 'telegraf';
 import startScene from './controllers/start';
 import productsScene from './controllers/products';
+import cartScene from './controllers/cart';
 import Logger from "./util/logger";
 import Axios from 'axios';
 import Telegram from './telegram';
+import {CartCollectionProduct} from "./models/cartCollection";
 dotenv.config();
 async function wakeMongoConnection() {
     Logger.info('Start Wake Connection to  mongo');
@@ -30,7 +32,8 @@ const startBot = async()=>{
     const bot = new Telegraf(process.env.TELEGRAM_TOKEN);
     const stage = new Stage([
         startScene,
-        productsScene
+        productsScene,
+        cartScene,
     ]);
     const i18n = new TelegrafI18n({
         defaultLanguage: 'ru',
@@ -52,6 +55,22 @@ const startBot = async()=>{
         match('keyboards.main_keyboard.products'),
         asyncWrapper(async (ctx: ContextMessageUpdate) => await ctx.scene.enter('products'))
     );
+    // bot.action(/.+/, (ctx) => {
+    //     console.log('action: ',ctx.match)
+    // });
+    bot.hears(
+        /Корзина/,
+        // match('keyboards.main_keyboard.cart'),
+        asyncWrapper(async (ctx: ContextMessageUpdate) => {await ctx.scene.enter('cart')})
+    );
+     bot.hears(
+        match('keyboards.main_keyboard.remove_cart'),
+        asyncWrapper(async (ctx: ContextMessageUpdate) => {
+                new CartCollectionProduct(ctx).clear();
+                await ctx.scene.enter('start')
+            })
+    );
+
     await Axios.get(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/deleteWebhook`);
     bot.startPolling();
 
