@@ -27,7 +27,7 @@ products.enter(async (ctx: ContextMessageUpdate) => {
                 currency: 'RUB',
                 photo_url: mongoProduct.get('previewUrl'),
                 is_flexible: true,
-                prices: [{label: mongoProduct.get('title'), amount: mongoProduct.get('price')}],
+                prices: [{label: mongoProduct.get('title'), amount: mongoProduct.get('price')*100}],
                 payload: 'Test',
                 reply_markup: Markup.inlineKeyboard([
                     Markup.payButton(ctx.i18n.t('scenes.products.buy')),

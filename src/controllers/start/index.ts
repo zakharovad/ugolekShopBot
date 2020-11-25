@@ -12,9 +12,9 @@ start.enter(async (ctx: ContextMessageUpdate) => {
     await ctx.reply(ctx.i18n.t('scenes.start.welcome'), mainKeyboard);
 });
 start.command('reset', leave());
-start.leave(async (ctx: ContextMessageUpdate) => {
-    const { mainKeyboard } = getMainKeyboard(ctx);
-
-    await ctx.reply(ctx.i18n.t('scenes.start.by'), mainKeyboard);
-});
+// start.leave(async (ctx: ContextMessageUpdate) => {
+//     const { mainKeyboard } = getMainKeyboard(ctx);
+//
+//     await ctx.reply(ctx.i18n.t('scenes.start.by'), mainKeyboard);
+// });
 export default start;

@@ -15,6 +15,10 @@ import Logger from "./util/logger";
 import Axios from 'axios';
 import Telegram from './telegram';
 import {CartCollectionProduct} from "./models/cartCollection";
+//for testings///
+import{forTesting} from './middlewares/forTesting'
+import testProductsScene from './controllers/tests/products';
+////////////////
 dotenv.config();
 async function wakeMongoConnection() {
     Logger.info('Start Wake Connection to  mongo');
@@ -34,6 +38,7 @@ const startBot = async()=>{
         startScene,
         productsScene,
         cartScene,
+        testProductsScene,
     ]);
     const i18n = new TelegrafI18n({
         defaultLanguage: 'ru',
@@ -45,6 +50,9 @@ const startBot = async()=>{
     bot.use(session());
     bot.use(i18n.middleware());
     bot.use(stage.middleware());
+    //for testings//////////
+    bot.use(forTesting);
+    ////////////////////////
     bot.start(asyncWrapper(async (ctx: ContextMessageUpdate) => {ctx.scene.enter('start')}));
 
     bot.catch((error: any) => {
@@ -56,7 +64,7 @@ const startBot = async()=>{
         asyncWrapper(async (ctx: ContextMessageUpdate) => await ctx.scene.enter('products'))
     );
     // bot.action(/.+/, (ctx) => {
-    //     console.log('action: ',ctx.match)
+    //     Logger.debug(ctx.from)
     // });
     bot.hears(
         /Корзина/,
@@ -70,7 +78,9 @@ const startBot = async()=>{
                 await ctx.scene.enter('start')
             })
     );
-
+    bot.command([
+        '/testproducts',
+    ],asyncWrapper(async (ctx: ContextMessageUpdate) => {await ctx.scene.enter(ctx.message.text.replace('/',''))}));
     await Axios.get(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/deleteWebhook`);
     bot.startPolling();
 

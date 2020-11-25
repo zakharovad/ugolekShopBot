@@ -8,7 +8,8 @@ declare module 'telegraf'  {
     interface ContextMessageUpdate extends TelegrafContext, SceneContextMessageUpdate{
         i18n: I18n;
         session: {
-            cart:ICartProduct[]
+            cart:ICartProduct[],
+            params?:any
         };
 
     }
