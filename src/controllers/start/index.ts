@@ -9,7 +9,7 @@ const start = new Scene('start');
 start.enter(async (ctx: ContextMessageUpdate) => {
     const uid = String(ctx.from.id);
     const { mainKeyboard } = getMainKeyboard(ctx);
-    await ctx.reply(ctx.i18n.t('scenes.start.welcome'), mainKeyboard);
+    await ctx.reply(ctx.i18n.t('scenes.start.welcome',{name:ctx.from.first_name}), mainKeyboard);
 });
 start.command('reset', leave());
 // start.leave(async (ctx: ContextMessageUpdate) => {

@@ -1,7 +1,7 @@
 import {ContextMessageUpdate, Extra, Markup} from 'telegraf';
 import Stage from 'telegraf/stage';
 import Scene from 'telegraf/scenes/base';
-import Product, {IProduct} from "../../models/mongo/product";
+import Product, {IMongoProduct} from "../../models/mongo/product";
 import {IProductInvoice} from "../../models/invoiceProduct/IProductInvoice";
 import {InvoiceProductIterator} from "../../models/invoiceProduct/InvoiceProductIterator";
 import Logger from "../..//util/logger";
@@ -9,7 +9,7 @@ import asyncWrapper from "../../util/error-handler";
 import {CartCollectionProduct, ICartProduct} from "../../models/cartCollection";
 const {leave} = Stage;
 const products = new Scene('testproducts');
-const menuProducts = (mongoProducts: IProduct[])=>{
+const menuProducts = (mongoProducts: IMongoProduct[])=>{
     return Extra.HTML().markup((m: Markup) =>
         m.inlineKeyboard(
             mongoProducts.map(item => [
@@ -25,7 +25,7 @@ const menuProducts = (mongoProducts: IProduct[])=>{
 };
 const showProduct = async (ctx: ContextMessageUpdate) =>{
     const action = JSON.parse(ctx.callbackQuery.data);
-    const mongoProduct: IProduct = await Product.findOne({_id:action.p});
+    const mongoProduct: IMongoProduct = await Product.findOne({_id:action.p});
     console.log("ctx.session.params: ",ctx.session.params);
     let invoiceProduct: IProductInvoice = {
         // reply_to_message_id:ctx.session.params,
@@ -51,7 +51,7 @@ const showProduct = async (ctx: ContextMessageUpdate) =>{
     await ctx.answerCbQuery();
 };
 products.enter(async (ctx: ContextMessageUpdate) => {
-    const mongoProducts: IProduct[] = await Product.find({});
+    const mongoProducts: IMongoProduct[] = await Product.find({});
     await ctx.reply('Меню навинок', menuProducts(mongoProducts));
 
 

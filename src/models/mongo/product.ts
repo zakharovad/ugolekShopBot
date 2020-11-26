@@ -1,9 +1,10 @@
 import mongoose, { Document } from 'mongoose';
 
-export interface IProduct extends Document {
+export interface IMongoProduct extends Document {
     _id: string;
     title: string;
     price: number;
+    currency: string;
     previewUrl: string;
     description: string;
     created?: Date;
@@ -12,9 +13,10 @@ export interface IProduct extends Document {
 
 export const ProductSchema = new mongoose.Schema(
     {
-        _id: String,
+        _id: mongoose.Schema.Types.ObjectId,
         title: String,
         price: Number,
+        currency: String,
         previewUrl: String,
         description: String,
         created: {type: Date, default: Date.now},
@@ -23,5 +25,5 @@ export const ProductSchema = new mongoose.Schema(
     {timestamps: {createdAt: 'created', updatedAt: 'updated'},}
 );
 
-const Product = mongoose.model<IProduct>('Product', ProductSchema);
+const Product = mongoose.model<IMongoProduct>('Product', ProductSchema);
 export default Product;

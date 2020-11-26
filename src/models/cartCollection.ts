@@ -26,7 +26,7 @@ export class CartCollectionProduct {
         if(this.ctx.session.cart == undefined){
             return 0.00;
         }
-        return this.ctx.session.cart.reduce((sum:number,product:ICartProduct)=>{ return sum+product.total_amount*product.count},0)
+        return this.ctx.session.cart.reduce((sum:number,product:ICartProduct)=>{ return sum+product.total_amount*product.count*100},0)
     }
     getDescription():string{
         if(this.ctx.session.cart == undefined){
