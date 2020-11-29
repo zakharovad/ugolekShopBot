@@ -10,10 +10,12 @@ import TelegrafI18n, { match } from 'telegraf-i18n';
 import Telegraf, { ContextMessageUpdate, Extra, Markup } from 'telegraf';
 import startScene from './controllers/start';
 import productsScene from './controllers/products';
+import {preCheckout} from './events/preCheckout';
+import {message} from './events/message';
 import cartScene from './controllers/cart';
 import Logger from "./util/logger";
 import Axios from 'axios';
-import Telegram from './telegram';
+
 import {CartCollectionProduct} from "./models/cartCollection";
 //for testings///
 import{forTesting} from './middlewares/forTesting'
@@ -78,9 +80,12 @@ const startBot = async()=>{
                 await ctx.scene.enter('start')
             })
     );
+    bot.on('pre_checkout_query', preCheckout);
+    bot.on('message', message);
     bot.command([
         '/testproducts',
     ],asyncWrapper(async (ctx: ContextMessageUpdate) => {await ctx.scene.enter(ctx.message.text.replace('/',''))}));
+
     await Axios.get(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/deleteWebhook`);
     bot.startPolling();
 

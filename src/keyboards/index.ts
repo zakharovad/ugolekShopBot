@@ -28,7 +28,7 @@ export const getProductsMenu = (ctx: ContextMessageUpdate,mongoProducts: IMongoP
         m.inlineKeyboard(
             mongoProducts.map(item => [
                 m.callbackButton(
-                    `(${item.title}) ${item.price}${item.currency}`,
+                    `${item.title} - ${item.price}${item.currency}`,
                     JSON.stringify({ a: 'product_card', p: item._id }),
                     false
                 )

@@ -2,7 +2,7 @@
   "keyboards": {
     "main_keyboard": {
       "products": "\uD83D\uDCA3 Наши новинки",
-      "cart": "\uD83D\uDED2 Корзина ${count}",
+      "cart": "\uD83D\uDED2 Корзина${(count>0?' '+count:'')}",
       "remove_cart": "❌ Очистить корзинy",
       "settings": "⚙️ Настройки"
     },
@@ -23,7 +23,14 @@
       "check_assortment": "Ознакомьтесь с нашим ассортиментом",
       "chosen_product": "${title}",
       "to_cart": "\uD83D\uDED2 В корзину"
+    },
+    "cart": {
+      "invoice_title": "Ваш заказ",
+      "empty_text": "Мы не можем сформировать заказ, ваша корзина пуста"
     }
+  },
+  "order": {
+    "successful_pay":"Ваш заказ успешно сформирован!\nНаши менеджеры свяжутся c Вами в ближайшее время!"
   },
   "shared": {
     "something_went_wrong": "❌ Ошибочка вышла.. Попробуй еще раз"

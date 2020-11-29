@@ -26,7 +26,6 @@ const menuProducts = (mongoProducts: IMongoProduct[])=>{
 const showProduct = async (ctx: ContextMessageUpdate) =>{
     const action = JSON.parse(ctx.callbackQuery.data);
     const mongoProduct: IMongoProduct = await Product.findOne({_id:action.p});
-    console.log("ctx.session.params: ",ctx.session.params);
     let invoiceProduct: IProductInvoice = {
         // reply_to_message_id:ctx.session.params,
         provider_token: process.env.PAYMENT_TOKEN,
@@ -42,12 +41,8 @@ const showProduct = async (ctx: ContextMessageUpdate) =>{
             Markup.payButton(ctx.i18n.t('scenes.products.buy')),
             Markup.callbackButton(ctx.i18n.t('scenes.products.to_cart'), 'to_cart')
         ])
-    };
-    if(ctx.session.params != undefined)
-        ctx.deleteMessage(ctx.session.params);
+    }
     let res = await ctx.replyWithInvoice(invoiceProduct, {});
-    ctx.session.params = res.message_id;
-    console.log("ctx.session.params: ",ctx.session.params);
     await ctx.answerCbQuery();
 };
 products.enter(async (ctx: ContextMessageUpdate) => {

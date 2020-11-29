@@ -1,5 +1,5 @@
 import {ContextMessageUpdate} from 'telegraf';
-
+import Logger from "../util/logger";
 export class CartCollectionProduct {
     ctx: ContextMessageUpdate;
 
@@ -10,7 +10,7 @@ export class CartCollectionProduct {
     set(product: ICartProduct) {
         product.count = product.count|| 1;
         const index = this.ctx.session.cart.findIndex((cartProduct) => {
-            return (cartProduct.start_parameter == product.start_parameter && cartProduct.total_amount == product.total_amount
+            return (cartProduct._id.toString() == product._id.toString() && cartProduct.price == product.price
             );
         })
         if (index >= 0) {
@@ -26,7 +26,17 @@ export class CartCollectionProduct {
         if(this.ctx.session.cart == undefined){
             return 0.00;
         }
-        return this.ctx.session.cart.reduce((sum:number,product:ICartProduct)=>{ return sum+product.total_amount*product.count*100},0)
+        return this.ctx.session.cart.reduce((sum:number,product:ICartProduct)=>{ return sum+product.price*product.count},0)*100
+    }
+    getProductsIds():string{
+        if(this.ctx.session.cart == undefined){
+            return null;
+        }
+        return this.ctx.session.cart.reduce((ids:string[],product:ICartProduct,index:number)=>{
+            ids.push(product._id.toString());
+            return ids;
+        },[]).join(",");
+
     }
     getDescription():string{
         if(this.ctx.session.cart == undefined){
@@ -48,7 +58,7 @@ export type ICartProduct = {
     count?: number;
     title: string;
     description?: string;
-    total_amount: number;
-    start_parameter: string;
+    price: number;
+    _id: Object;
 
 }

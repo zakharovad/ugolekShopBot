@@ -1,14 +1,14 @@
 
 import {IProductInvoice} from "./IProductInvoice";
-import {TelegrafContext} from "telegraf/typings/context";
-
-export class InvoiceProductIterator implements AsyncIterable<number>{
+import {ContextMessageUpdate,} from "telegraf";
+import {MessageInvoice} from "telegraf/typings/telegram-types";
+export class InvoiceProductIterator implements AsyncIterable<MessageInvoice>{
 
     products:IProductInvoice[] = [];
     current:number = 0;
-    ctx:TelegrafContext;
+    ctx:ContextMessageUpdate;
 
-    constructor(ctx:TelegrafContext,products:IProductInvoice[]) {
+    constructor(ctx:ContextMessageUpdate,products:IProductInvoice[]) {
      this.products = products;
      this.ctx = ctx;
     }
@@ -16,15 +16,15 @@ export class InvoiceProductIterator implements AsyncIterable<number>{
     [Symbol.asyncIterator](){
         const _this = this;
         return{
-            async next():Promise<IteratorResult<number>> {
+            async next():Promise<IteratorResult<MessageInvoice>> {
                 const response =  {
                     done: true,
-                    value: _this.current
+                    value: ({} as MessageInvoice)
                 };
                 if (_this.current < _this.products.length){
                     const product:IProductInvoice = _this.products[_this.current];
                     _this.current++;
-                    await _this.ctx.replyWithInvoice(product, {});
+                    response.value = await _this.ctx.replyWithInvoice(product, {});
                     response.done  = false;
                 }
                 return response;
