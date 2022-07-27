@@ -1,0 +1,87 @@
+[
+  {
+    "title": "Тестовый товар",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 2",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 3",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 4",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 5",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 6",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 7",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 8",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 9",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 10",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 11",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  },
+  {
+    "title": "Тестовый товар 12",
+    "price": 1200.00,
+    "currency": "RUB",
+    "previewUrl": "https://downloader.disk.yandex.ru/preview/d57500cc0032399276d60b10def36bbe1c4bafbeb2b8acb7515f80c9e18455fc/62e18b0c/oXvgvmJv8GIrfYhjMDyh_nUwWVDsmsCti2jyqMUMrqNAZ3k7L1dghhnDo1k5hcAdZYXxMw587MqtHImg29rNpw%3D%3D?uid=0&filename=wok.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v2&size=2048x2048",
+    "description": "Тут распологается описание товара"
+  }
+
+]

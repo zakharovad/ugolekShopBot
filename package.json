@@ -5,8 +5,10 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run serve",
+    "import":"npm run products",
     "build": "npm run build-ts && npm run eslint",
-    "serve": "NODE_ENV=production node dist/index.js",
+    "products": "node dist/importProducts.js",
+    "serve": "node dist/index.js",
     "watch-node": "nodemon dist/index.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\"  \"npm run watch-ts\" \"npm run watch-node\"",
     "build-ts": "tsc",
